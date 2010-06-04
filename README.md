@@ -1,3 +1,28 @@
+<p>
+Table of Conents
+<ul>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#using">Getting Started with StackUnderflow.js</a></li>
+<li>
+    <a href="#api">API Reference</a>
+    <ul>
+        <li><a href="appId">stackunderflow.appId</a></li>
+        <li><a href="site">stackunderflow.site</a></li>
+        <li><a href="loaded">stackunderflow.loaded</a></li>
+        <li><a href="google">stackunderflow.googleQuestions</a></li>
+        <li><a href="getQuestions">stackunderflow.getQuestions</a></li>
+        <li><a href="searchQuestions">stackunderflow.searchQuestions</a></li>
+        <li><a href="getQuestionsWithTags">stackunderflow.getQuestionsWithTags</a></li>
+        <li><a href="renderQuestions">stackunderflow.render.questions</a></li>
+    </ul>
+</li>
+<li><a href="#templating">Templating</a></li>
+<li><a href="#css">Customizing CSS</a></li>
+</ul>
+</p>
+
+
+<a name="intro"></a>
 <h1>Introduction</h1>
 <p>
 StackUnderflow.js is a lightweight JavaScript library that makes retrieving and rendering question summary information from StackExchange sites simple. It supports retrieving questions by Question ID, tags, keyword, and even by Google search results to enable you to search the body of questions, even though the StackExchange API does not support it (currently limited to 8 results).
@@ -13,7 +38,7 @@ Also, because it is hosted and designed to be easily usable from anywhere, it co
 </p>
 
 <a name="using"></a>
-<h1>Using StackUnderflow.js</h1>
+<h1>Getting Started with StackUnderflow.js</h1>
 <p>
 Simply include the script and the default css on your page:
 <pre>
@@ -39,7 +64,7 @@ StackUnderflow.js APIs let you search for StackExchange questions using any Stac
 <p>
 This is a global setting that changes the appId used when querying StackExchange. By default, the key is the appId for StackUnderflow.js. You may wish to set it to your own StackExchange key for tracking and API limit reasons.
 <pre>
-stackunderflow.appId = "<my app id>";
+stackunderflow.appId = "&lt;my app id&gt;";
 </pre>
 </p>
 
@@ -221,9 +246,6 @@ stackunderflow.templates.simple = "<li>{title}</li>";
 stackunderflow.getQuestionsWithTags("foo").render("#results", "simple");
 </pre>
 There are two templates included by default: question, and tag.
-</p>
-<p>
-<strong>Filtering</strong>
 </p>
 
 <a name="css"></a>
