@@ -16,7 +16,7 @@ Table of Conents
         <li><a href="#renderQuestions">stackunderflow.render.questions</a></li>
     </ul>
 </li>
-<li><a href="#templating">Templating</a></li>
+<li><a href="#templating">HTML Templating</a></li>
 <li><a href="#css">Customizing CSS</a></li>
 </ul>
 </p>
@@ -227,8 +227,8 @@ Note that the filter need not return something derived from the value itself. Th
 There are several built-in filters.
 <ul>
 <li><strong>date</strong> Converts a StackExchange Epoch date into a string date of the form "yyyy-mm-dd". {date:last_activity_date}</li>
-<li><string>acceptedclass</strong> Given the answered or unanswered status of a question, returns the appropriate css class to use for the 'answers' count. &lt;span class="{acceptedclass:=}"&gt;&lt;/span&gt;</li>
-<li><string>ifdef</strong> If the value given is undefined, returns 'none'. Lets you hide a section of HTML if a value does not exist. For example, some questions have no owner. &lt;div style="display:{ifdef:owner}"&gt; ... &lt;/div&gt;</li>
+<li><strong>acceptedclass</strong> Given the answered or unanswered status of a question, returns the appropriate css class to use for the 'answers' count. &lt;span class="{acceptedclass:=}"&gt;&lt;/span&gt;</li>
+<li><strong>ifdef</strong> If the value given is undefined, returns 'none'. Lets you hide a section of HTML if a value does not exist. For example, some questions have no owner. &lt;div style="display:{ifdef:owner}"&gt; ... &lt;/div&gt;</li>
 </ul>
 </p>
 
@@ -245,14 +245,14 @@ From within a template, if an object property is an array, you may render each i
 <p>
 You can define templates using the stackunderflow.templates map and refer to them in the render() method by name. For example, this defines a simple template that lists question titles as list items.
 <pre>
-stackunderflow.templates.simple = "<li>{title}</li>";
+stackunderflow.templates.simple = "&lt;li&gt;{title}&lt;/li&gt;";
 stackunderflow.getQuestionsWithTags("foo").render("#results", "simple");
 </pre>
 There are two templates included by default: question, and tag.
 </p>
 
 <a name="css"></a>
-<h1>CSS</h1>
+<h1>Customizing CSS</h1>
 <p>
 The default templates use CSS class names and HTML structure modeled after the way StackExchange renders a "question summary" page. You may use your own customized templates to change the structure and the CSS classes used. Or, you may customize the look by only changing how the CSS classes are defined.
 </p>
