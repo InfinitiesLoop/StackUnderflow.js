@@ -6,14 +6,14 @@ Table of Conents
 <li>
     <a href="#api">API Reference</a>
     <ul>
-        <li><a href="appId">stackunderflow.appId</a></li>
-        <li><a href="site">stackunderflow.site</a></li>
-        <li><a href="loaded">stackunderflow.loaded</a></li>
-        <li><a href="google">stackunderflow.googleQuestions</a></li>
-        <li><a href="getQuestions">stackunderflow.getQuestions</a></li>
-        <li><a href="searchQuestions">stackunderflow.searchQuestions</a></li>
-        <li><a href="getQuestionsWithTags">stackunderflow.getQuestionsWithTags</a></li>
-        <li><a href="renderQuestions">stackunderflow.render.questions</a></li>
+        <li><a href="#appId">stackunderflow.appId</a></li>
+        <li><a href="#site">stackunderflow.site</a></li>
+        <li><a href="#loaded">stackunderflow.loaded</a></li>
+        <li><a href="#google">stackunderflow.googleQuestions</a></li>
+        <li><a href="#getQuestions">stackunderflow.getQuestions</a></li>
+        <li><a href="#searchQuestions">stackunderflow.searchQuestions</a></li>
+        <li><a href="#getQuestionsWithTags">stackunderflow.getQuestionsWithTags</a></li>
+        <li><a href="#renderQuestions">stackunderflow.render.questions</a></li>
     </ul>
 </li>
 <li><a href="#templating">Templating</a></li>
@@ -21,6 +21,9 @@ Table of Conents
 </ul>
 </p>
 
+<div>
+<img src="http://infinity88.com/stackunderflow/stackunderflow.png" />StackUnderflow
+</div>
 
 <a name="intro"></a>
 <h1>Introduction</h1>
@@ -42,13 +45,13 @@ Also, because it is hosted and designed to be easily usable from anywhere, it co
 <p>
 Simply include the script and the default css on your page:
 <pre>
-&lt;link type="text/css" rel="Stylesheet" href="http://infinity88.com/stackunderflow/stackexchange.min.css" /&gt;
+&lt;link type="text/css" rel="Stylesheet" href="http://infinity88.com/stackunderflow/stackoverflow.min.css" /&gt;
 &lt;script type="text/javascript" src="http://infinity88.com/stackunderflow/stackunderflow-1.0.0.min.js"&gt;&lt;/script&gt;
 </pre>
 Then, you can immediately start using the API. It will take care of ensuring the document has fully loaded before rendering anything, should you choose to do that.
 <pre>
 &lt;script type="text/javascript"&gt;
-stackunderflow.getQuestionsWithTags("asp.net viewstate").render("#results");
+stackunderflow.getQuestionsWithTags("asp.net;viewstate").render("#results");
 &lt;/script&gt;
 </pre>
 </p>
