@@ -38,6 +38,9 @@ Also, because it is hosted and designed to be easily usable from anywhere, it co
 <li>Display questions related to keyword or tags on a bug tracking site.</li>
 <li>Display questions related to a feature directly from online documentation for your products.</li>
 </ul>
+
+<p>Here is StackUnderflow.js pulling in questions that link to my blog:</p>
+<img src="http://infinity88.com/stackunderflow/StackUnderflowScreen.png" alt="" />
 </p>
 
 <a name="using"></a>
