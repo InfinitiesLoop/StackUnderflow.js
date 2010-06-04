@@ -207,6 +207,12 @@ Tokens may pass through multiple levels of objects with the 'dot' notation. For 
 <p>
 If you would like to output the given value itself rather than a property of it, you may use <strong>{=}</strong>. For example, tags are given as an array of strings. When rendering the nested template for tags, each value is a string. The name of the tag then is output with {=}.
 </p>
+<p>
+<strong>Special token {site}</strong>
+</p>
+<p>
+You may use the {site} token at any time. It will be replaced with the current site setting on stackunderflow.site. This is important, for example, when building links to the exchange site, as urls given by the API are relative. For example, a question may be linked by the combination of these tokens: <strong>{site}{question_answers_url}</strong>
+</p>
 
 <p>
 <strong>Using Filters</strong>
