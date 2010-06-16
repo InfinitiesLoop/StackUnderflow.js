@@ -13,6 +13,7 @@ Table of Conents
         <li><a href="#getQuestions">stackunderflow.getQuestions</a></li>
         <li><a href="#searchQuestions">stackunderflow.searchQuestions</a></li>
         <li><a href="#getQuestionsWithTags">stackunderflow.getQuestionsWithTags</a></li>
+        <li><a href="#getQuestionsByUser">stackunderflow.getQuestionsByUser</a></li>
         <li><a href="#renderQuestions">stackunderflow.render.questions</a></li>
     </ul>
 </li>
@@ -157,6 +158,22 @@ The return value is a context object that contains additional methods that opera
 <pre>
 // find unanswered questions about jQuery
 stackunderflow.getQuestionsWithTags("jquery", true, function(result) {
+    alert(result.questions.length);
+});
+</pre>
+</p>
+
+<a name="getQuestionsByUser"></a>
+<h2>stackunderflow.getQuestionsByUser(userIds, [optional]complete(questions))</h2>
+<p>
+Gets questions asked by the given user(s) by their user IDs.
+<ul>
+<li><strong>userIds</strong> A userId, an array of userIds, or a semi-colon delimited list of userIds.</li>
+<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.8/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li></ul>
+The return value is a context object that contains additional methods that operate on the future results. See the section on <i>chaining</i> for details.
+<pre>
+// find questions asked by InfinitiesLoop 
+stackunderflow.getQuestionsByUser(110812, function(result) {
     alert(result.questions.length);
 });
 </pre>
