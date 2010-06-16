@@ -7,6 +7,7 @@ var google = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback
     questionsTagged = "http://api.stackoverflow.com/0.8/questions/?key={key}&tagged={tagged}&jsonp={callback}",
     search = "http://api.stackoverflow.com/0.8/search/?key={key}&intitle={intitle}&nottagged={nottagged}&tagged={tagged}&jsonp={callback}",
     unansweredQuestionsTagged = "http://api.stackoverflow.com/0.8/questions/unanswered/?key={key}&tagged={tagged}&jsonp={callback}",
+    questionsByUser = "http://api.stackoverflow.com/0.8/users/{id}/questions?key={key}&jsonp={callback}",
     // prevent loading more than once
     isLoaded,
     // each call creates a unique jsonp callback
@@ -164,6 +165,20 @@ function append(target, html) {
     }
 }
 
+function execQuestions(url, params, complete) {
+    var renderArgs,
+        ctx = { render: function() { renderArgs = arguments; } };
+    jsonp(url, params, function(questions) {
+        if (complete) complete(questions);
+        if (renderArgs) {
+            renderArgs = Array.prototype.slice.apply(renderArgs);
+            renderArgs.splice(0, 0, questions);
+            su.render.questions.apply(null, renderArgs);
+        }
+    });
+    return ctx;
+}
+
 var su = window.stackunderflow = {
     appId: "oxXcnoD51kKE-crj7TadaA",
     site: "http://stackoverflow.com",
@@ -199,44 +214,18 @@ var su = window.stackunderflow = {
         return ctx;
     },
     getQuestions: function(questionIds, complete) {
-        var renderArgs,
-            ctx = { render: function() { renderArgs = arguments; } };
-        jsonp(questions, { id: questionIds.join(';') }, function(questions) {
-            if (complete) complete(questions);
-            if (renderArgs) {
-                renderArgs = Array.prototype.slice.apply(renderArgs);
-                renderArgs.splice(0, 0, questions);
-                su.render.questions.apply(null, renderArgs);
-            }
-        });
-        return ctx;
+        return execQuestions(questions, { id: questionIds.join(';') }, complete);
     },
     searchQuestions: function(intitle, tagged, notTagged, complete) {
-        var renderArgs,
-            ctx = { render: function() { renderArgs = arguments; } };
-        jsonp(search, { tagged: tagged, nottagged: notTagged, intitle: intitle }, function(questions) {
-            if (complete) complete(questions);
-            if (renderArgs) {
-                renderArgs = Array.prototype.slice.apply(renderArgs);
-                renderArgs.splice(0, 0, questions);
-                su.render.questions.apply(null, renderArgs);
-            }
-        });
-        return ctx;
+        return execQuestions(search, { tagged: tagged, nottagged: notTagged, intitle: intitle }, complete);
     },    
     getQuestionsWithTags: function(tags, onlyUnanswered, complete) {
-        var renderArgs,
-            ctx = { render: function() { renderArgs = arguments; } };
-        jsonp(onlyUnanswered ? unansweredQuestionsTagged : questionsTagged, { tagged: tags }, function(questions) {
-            if (complete) complete(questions);
-            if (renderArgs) {
-                renderArgs = Array.prototype.slice.apply(renderArgs);
-                renderArgs.splice(0, 0, questions);
-                su.render.questions.apply(null, renderArgs);
-            }
-        });
-        return ctx;
+        return execQuestions(onlyUnanswered ? unansweredQuestionsTagged : questionsTagged,
+            { tagged: tags }, complete);
     },
+    getQuestionsByUser: function(userIds, complete) {
+        return execQuestions(questionsByUser, { id: userIds instanceof Array ? userIds.join(';') : userIds }, complete);
+    },    
     render: {
         questions: function(questions, target, template) {
             template = template || "question";
@@ -246,8 +235,10 @@ var su = window.stackunderflow = {
             }
             var html = "";
             questions = questions.questions;
-            for (var i = 0, l = questions.length; i < l; i++) {
-                html += applyTemplate(su.templates[template], questions[i]);
+            if (questions) {
+                for (var i = 0, l = questions.length; i < l; i++) {
+                    html += applyTemplate(su.templates[template], questions[i]);
+                }
             }
             append(target, html);
         }
