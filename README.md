@@ -79,7 +79,7 @@ stackunderflow.appId = "&lt;my app id&gt;";
 <p>
 This is a global setting that sets the StackExchange site to query against. Set it to the home url for the site. For example, the default value is "http://stackoverflow.com". Do not include a trailing slash or any other information.
 <pre>
-stackunderflow.appId = "http://superuser.com";
+stackunderflow.site = "http://superuser.com";
 </pre>
 </p>
 
