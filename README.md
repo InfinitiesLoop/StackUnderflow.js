@@ -50,7 +50,7 @@ Also, because it is hosted and designed to be easily usable from anywhere, it co
 Simply include the script and the default css on your page:
 <pre>
 &lt;link type="text/css" rel="Stylesheet" href="http://infinity88.com/stackunderflow/stackoverflow.min.css" /&gt;
-&lt;script type="text/javascript" src="http://infinity88.com/stackunderflow/stackunderflow-1.0.1.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://infinity88.com/stackunderflow/stackunderflow-1.0.2.min.js"&gt;&lt;/script&gt;
 </pre>
 Then, you can immediately start using the API. It will take care of ensuring the document has fully loaded before rendering anything, should you choose to do that.
 <pre>
@@ -101,7 +101,7 @@ stackunderflow.loaded(function() {
 Searches the current StackExchange site with Google for questions containing the given search term, then loads the questions with the StackExchange API.
 <ul>
 <li><strong>term</strong> The query to search for. May be of any format you can search Google for, such as with quotes for hard matches on multiple words. If not given, the search term will be equal to the complete current page URL in quotes. This is useful, for example, to find StackExchange questions that link to the current page.</li>
-<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.8/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li>
+<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.9/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li>
 </ul>
 The return value is a context object that contains additional methods that operate on the future results. See the section on <i>chaining</i> for details.
 <pre>
@@ -118,7 +118,7 @@ stackunderflow.googleQuestions("asp.net viewstate", function(result) {
 Retrieves one or more questions from the StackExchange API.
 <ul>
 <li><strong>questionIds</strong> A string containing the list of questions to retrieve, or an array of question ids to retrieve multiple questions.</li>
-<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.8/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li>
+<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.9/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li>
 </ul>
 The return value is a context object that contains additional methods that operate on the future results. See the section on <i>chaining</i> for details.
 <pre>
@@ -136,7 +136,7 @@ Searches for questions from the StackExchange API. You may search by question ti
 <li><strong>intitle</strong> A string containing the search term to match against question titles.</li>
 <li><strong>tagged</strong> A semi-colon delimited list of tags. Matching questions must have one or more of the given tags.</li>
 <li><strong>nottagged</strong> A semi-colon delimited list of tags. Matching questions must not have any of the given tags.</li>
-<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.8/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li></ul>
+<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.9/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li></ul>
 The return value is a context object that contains additional methods that operate on the future results. See the section on <i>chaining</i> for details.
 <pre>
 // find questions tagged 'asp.net' and 'javascript' but NOT 'jquery'
@@ -153,7 +153,7 @@ Searches for questions with all the given tags from the StackExchange API.
 <ul>
 <li><strong>tags</strong> A semi-colon delimited list of tags. Matching questions must have ALL of the given tags.</li>
 <li><strong>onlyUnanswered</strong> boolean -- true if you would like to restrict the search to questions with no up-voted answers.</li>
-<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.8/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li></ul>
+<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.9/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li></ul>
 The return value is a context object that contains additional methods that operate on the future results. See the section on <i>chaining</i> for details.
 <pre>
 // find unanswered questions about jQuery
@@ -169,7 +169,7 @@ stackunderflow.getQuestionsWithTags("jquery", true, function(result) {
 Gets questions asked by the given user(s) by their user IDs.
 <ul>
 <li><strong>userIds</strong> A userId, an array of userIds, or a semi-colon delimited list of userIds.</li>
-<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.8/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li></ul>
+<li><strong>complete</strong> A function that is called when the results have been retrieved. A single parameter is given -- an instance of a <a href="http://api.stackoverflow.com/0.9/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API.</li></ul>
 The return value is a context object that contains additional methods that operate on the future results. See the section on <i>chaining</i> for details.
 <pre>
 // find questions asked by InfinitiesLoop 
@@ -184,7 +184,7 @@ stackunderflow.getQuestionsByUser(110812, function(result) {
 <p>
 Renders the given questions result from the StackExchange API into the given target element, using the given HTML template.
 <ul>
-<li><strong>questions</strong> The questions to render, as an instance of a <a href="http://api.stackoverflow.com/0.8/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API. Note that this is NOT an array of questions, it contains meta information as well.</li>
+<li><strong>questions</strong> The questions to render, as an instance of a <a href="http://api.stackoverflow.com/0.9/help/method?method=questions" target="_blank">questions result</a> as defined by the StackExchange API. Note that this is NOT an array of questions, it contains meta information as well.</li>
 <li><strong>target</strong> The DOM element to append the rendering to, or a DOM element id in the form "#id". Note that only ID selectors are supported if you use the string form.</li>
 <li><strong>template</strong> The name of the HTML template to use to render the questions. Uses the "question" template by default. See the section on HTML templating for more details.</li></ul>
 <pre>
@@ -207,7 +207,7 @@ Note that the rendering always <i>appends</i> to the given element with appendCh
 StackUnderflow.js uses very lightweight and simple HTML templating. You simply put placeholder tokens in the desired HTML that correspond to properties defined by the StackExchange API. The placeholder support filtering so you can customize how tokens are evaluated, allowing for simple but powerful techniques to customize the rendering.
 </p>
 <p>
-When rendering questions, you have access to the entire object model defined by each question in a <a href="http://api.stackoverflow.com/0.8/help/method?method=questions" target="_blank">questions result</a> object. Your template may use all of this information, or little of it. You could, for example, have a simple template that just lists the titles of the questions.
+When rendering questions, you have access to the entire object model defined by each question in a <a href="http://api.stackoverflow.com/0.9/help/method?method=questions" target="_blank">questions result</a> object. Your template may use all of this information, or little of it. You could, for example, have a simple template that just lists the titles of the questions.
 </p>
 <p>
 <strong>Tokens</strong>
