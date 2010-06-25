@@ -3,11 +3,11 @@
 
 // some API urls
 var google = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback={callback}&rsz=large&q={query}",
-    questions = "http://api.stackoverflow.com/0.8/questions/{id}?key={key}&jsonp={callback}",
-    questionsTagged = "http://api.stackoverflow.com/0.8/questions/?key={key}&tagged={tagged}&jsonp={callback}",
-    search = "http://api.stackoverflow.com/0.8/search/?key={key}&intitle={intitle}&nottagged={nottagged}&tagged={tagged}&jsonp={callback}",
-    unansweredQuestionsTagged = "http://api.stackoverflow.com/0.8/questions/unanswered/?key={key}&tagged={tagged}&jsonp={callback}",
-    questionsByUser = "http://api.stackoverflow.com/0.8/users/{id}/questions?key={key}&jsonp={callback}",
+    questions = "http://api.stackoverflow.com/0.9/questions/{id}?key={key}&jsonp={callback}",
+    questionsTagged = "http://api.stackoverflow.com/0.9/questions/?key={key}&tagged={tagged}&jsonp={callback}",
+    search = "http://api.stackoverflow.com/0.9/search/?key={key}&intitle={intitle}&nottagged={nottagged}&tagged={tagged}&jsonp={callback}",
+    unansweredQuestionsTagged = "http://api.stackoverflow.com/0.9/questions/unanswered/?key={key}&tagged={tagged}&jsonp={callback}",
+    questionsByUser = "http://api.stackoverflow.com/0.9/users/{id}/questions?key={key}&jsonp={callback}",
     // prevent loading more than once
     isLoaded,
     // each call creates a unique jsonp callback
