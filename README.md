@@ -50,7 +50,7 @@ Also, because it is hosted and designed to be easily usable from anywhere, it co
 Simply include the script and the default css on your page:
 <pre>
 &lt;link type="text/css" rel="Stylesheet" href="http://infinity88.com/stackunderflow/stackoverflow.min.css" /&gt;
-&lt;script type="text/javascript" src="http://infinity88.com/stackunderflow/stackunderflow-1.0.2.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://infinity88.com/stackunderflow/stackunderflow-1.0.3.min.js"&gt;&lt;/script&gt;
 </pre>
 Then, you can immediately start using the API. It will take care of ensuring the document has fully loaded before rendering anything, should you choose to do that.
 <pre>
