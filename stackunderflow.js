@@ -289,7 +289,7 @@ var su = window.stackunderflow = {
         },
         acceptedclass: function(value) {
             return value.accepted_answer_id ? "se-answered-accepted" :
-                (value.answers && value.answers.length ? "se-answered" : "se-unanswered");
+                (value.answer_count ? "se-answered" : "se-unanswered");
         },
         ifdef: function(value) {
             return typeof value === "undefined" ? "none" : "";
