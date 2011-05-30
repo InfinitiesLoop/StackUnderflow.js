@@ -291,21 +291,21 @@ var su = window.stackunderflow = {
             return value.accepted_answer_id ? "se-answered-accepted" :
                 (value.answer_count ? "se-answered" : "se-unanswered");
         },
-		viewcountnumber: function(value) {
+        viewcountnumber: function(value) {
             return value > 999 ? Math.round(value/1000) : value;
         },
-		viewcountk: function(value) {
+        viewcountk: function(value) {
             return value > 999 ? "k" : "";
         },
-		viewcountcolor: function(value) {
-			if(value >= 100000)
-				return "se-views-100k";
-			else if (value >= 10000)
-				return "se-views-10k";
-			else if (value >= 1000)
-				return "se-views-1k"
-			else
-				return "";
+        viewcountcolor: function(value) {
+            if(value >= 100000)
+                return "se-views-100k";
+            else if (value >= 10000)
+                return "se-views-10k";
+            else if (value >= 1000)
+                return "se-views-1k"
+            else
+                return "";
         },
         ifdef: function(value) {
             return typeof value === "undefined" ? "none" : "";
