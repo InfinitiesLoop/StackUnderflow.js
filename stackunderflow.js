@@ -255,9 +255,9 @@ var su = window.stackunderflow = {
             <div class="se-mini-counts">{answer_count}</div>\
             <div>answer</div> \
         </div> \
-        <div class="se-views"> \
-            <div class="se-mini-counts">{view_count}</div> \
-            <div>views</div> \
+        <div class="se-views {viewcountcolor:view_count}"> \
+            <div class="se-mini-counts">{viewcountnumber:view_count}</div> \
+            <div>{viewcountk:view_count}views</div> \
         </div> \
     </div> \
     <div class="se-summary"> \
@@ -290,6 +290,22 @@ var su = window.stackunderflow = {
         acceptedclass: function(value) {
             return value.accepted_answer_id ? "se-answered-accepted" :
                 (value.answer_count ? "se-answered" : "se-unanswered");
+        },
+		viewcountnumber: function(value) {
+            return value > 999 ? Math.round(value/1000) : value;
+        },
+		viewcountk: function(value) {
+            return value > 999 ? "k" : "";
+        },
+		viewcountcolor: function(value) {
+			if(value >= 100000)
+				return "se-views-100k";
+			else if (value >= 10000)
+				return "se-views-10k";
+			else if (value >= 1000)
+				return "se-views-1k"
+			else
+				return "";
         },
         ifdef: function(value) {
             return typeof value === "undefined" ? "none" : "";
