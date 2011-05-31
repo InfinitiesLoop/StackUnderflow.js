@@ -99,6 +99,19 @@ within an element with the '.se-question-summary' class.
 .se-question-summary .se-views strong {
     display: block;
 }
+
+.se-question-summary .se-views-1k {
+    color: #9B764F;
+}
+
+.se-question-summary .se-views-10k {
+    color: #CF7721;
+}
+
+.se-question-summary .se-views-100k {
+    color: #FE7A15;
+}
+
 .se-question-summary .se-status {
     padding: 4px 0 4px;
     text-align: center;
