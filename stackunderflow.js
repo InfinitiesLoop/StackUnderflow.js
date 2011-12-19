@@ -246,19 +246,20 @@ var su = window.stackunderflow = {
     templates: {
         tag: '<a href="{site}/questions/tagged/{=}" class="se-post-tag" title="show questions tagged \'{=}\'" rel="tag">{=}</a> ',
         question: '<div class="se-question-summary" id="question-summary-{question_id}"> \
-    <div onclick="window.location.href=\'{site}{question_answers_url}\'" class="se-cp"> \
-        <div class="se-votes"> \
-            <div class="se-mini-counts">{up_vote_count}</div> \
-            <div>votes</div> \
+    <div onclick="window.location.href=\'{site}{question_answers_url}\'" class="se-cp statscontainer"> \
+        <div class="statsarrow"></div> \
+        <div class="stats"> \
+            <div class="se-vote"> \
+                <div class="se-votes"> \
+                    <span class="se-mini-counts vote-count-post"><strong>{up_vote_count}</strong></span> \
+                    <div class="viewcount">votes</div> \
+                </div> \
+            </div> \
+            <div class="se-status {acceptedclass:=}"> \
+                <strong>{answer_count}</strong>answers \
+            </div> \
         </div> \
-        <div class="se-status {acceptedclass:=}"> \
-            <div class="se-mini-counts">{answer_count}</div>\
-            <div>answer</div> \
-        </div> \
-        <div class="se-views {viewcountcolor:view_count}"> \
-            <div class="se-mini-counts">{viewcountnumber:view_count}</div> \
-            <div>{viewcountk:view_count}views</div> \
-        </div> \
+        <div class="se-views {viewcountcolor:view_count}" title="{viewcountk:view_count} views">{viewcountk:view_count} views</div> \
     </div> \
     <div class="se-summary"> \
         <h3><a href="{site}{question_answers_url}" class="se-question-hyperlink" title="{title}">{title}</a></h3> \
@@ -266,8 +267,9 @@ var su = window.stackunderflow = {
             {template-tag:tags}\
         </div> \
         <div class="se-started"> \
-            <span class="se-relativetime">{date:last_activity_date}</span> \
-            <a style="display:{ifdef:owner}" href="{site}/users/{owner.user_id}/{owner.display_name}">{owner.display_name}</a> <span style="display:{ifdef:owner}"  class="se-reputation-score" title="reputation score">{owner.reputation}</span> \
+            <div class="user-info"><div class="user-action-time">asked <span title="{date:last_activity_date}">{date:last_activity_date}</span></div> \
+                <div class="user-details"><a style="display:{ifdef:owner}" href="{site}/users/{owner.user_id}/{owner.display_name}">{owner.display_name}</a> <span style="display:{ifdef:owner}" class="se-reputation-score" title="reputation score">{owner.reputation}</span></div> \
+            </div> \
         </div> \
     </div> \
 </div> '
