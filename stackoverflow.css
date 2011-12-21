@@ -9,7 +9,6 @@ within an element with the '.se-question-summary' class.
 .se-question-summary {
     color: #000;
     font-family: Arial, Liberation Sans, DejaVu Sans, sans-serif;
-    font-size: 80%;
     border-bottom: 1px solid #DEDEDE;
     overflow: hidden;
     padding: 6px 0px;
@@ -51,9 +50,9 @@ within an element with the '.se-question-summary' class.
 }
 
 .se-question-summary .se-vote span {
-display: block;
-color: #808185;
-font-weight: bold;
+    display: block;
+    color: #808185;
+    font-weight: bold;
 }
 
 .se-question-summary a {
@@ -85,7 +84,12 @@ font-weight: bold;
     font-weight: bold;
     margin-bottom: 5px;
 }
-
+.se-question-summary .excerpt {
+    height: 36px;
+    overflow: hidden;
+    line-height: 18px;
+    padding-bottom: 2px;
+}
 .se-question-summary .se-mini-counts {
     height: 25px;
     font-size: 190%;
