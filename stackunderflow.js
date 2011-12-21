@@ -3,11 +3,11 @@
 
 // some API urls
 var google = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback={callback}&rsz=large&q={query}",
-    questions = "http://api.stackoverflow.com/1.0/questions/{id}?key={key}&jsonp={callback}",
-    questionsTagged = "http://api.stackoverflow.com/1.0/questions/?key={key}&tagged={tagged}&jsonp={callback}",
-    search = "http://api.stackoverflow.com/1.0/search/?key={key}&intitle={intitle}&nottagged={nottagged}&tagged={tagged}&jsonp={callback}",
-    unansweredQuestionsTagged = "http://api.stackoverflow.com/1.0/questions/unanswered/?key={key}&tagged={tagged}&jsonp={callback}",
-    questionsByUser = "http://api.stackoverflow.com/1.0/users/{id}/questions?key={key}&jsonp={callback}",
+    questions = "http://api.stackoverflow.com/1.0/questions/{id}?key={key}&body=true&jsonp={callback}",
+    questionsTagged = "http://api.stackoverflow.com/1.0/questions/?key={key}&tagged={tagged}&body=true&jsonp={callback}",
+    search = "http://api.stackoverflow.com/1.0/search/?key={key}&intitle={intitle}&nottagged={nottagged}&tagged={tagged}&body=true&jsonp={callback}",
+    unansweredQuestionsTagged = "http://api.stackoverflow.com/1.0/questions/unanswered/?key={key}&tagged={tagged}&body=true&jsonp={callback}",
+    questionsByUser = "http://api.stackoverflow.com/1.0/users/{id}/questions?key={key}&body=true&jsonp={callback}",
     // prevent loading more than once
     isLoaded,
     // each call creates a unique jsonp callback
@@ -246,28 +246,30 @@ var su = window.stackunderflow = {
     templates: {
         tag: '<a href="{site}/questions/tagged/{=}" class="se-post-tag" title="show questions tagged \'{=}\'" rel="tag">{=}</a> ',
         question: '<div class="se-question-summary" id="question-summary-{question_id}"> \
-    <div onclick="window.location.href=\'{site}{question_answers_url}\'" class="se-cp"> \
-        <div class="se-votes"> \
-            <div class="se-mini-counts">{up_vote_count}</div> \
-            <div>votes</div> \
+    <div onclick="window.location.href=\'{site}{question_answers_url}\'" class="se-cp se-statscontainer"> \
+        <div class="statsarrow"></div> \
+        <div class="se-stats"> \
+            <div class="se-vote"> \
+                <div class="se-votes"> \
+                    <span class="se-mini-counts vote-count-post"><strong>{up_vote_count}</strong></span> \
+                    <div class="viewcount">vote{pluralize:up_vote_count}</div> \
+                </div> \
+            </div> \
+            <div class="se-status {acceptedclass:=}"> \
+                <strong>{answer_count}</strong>answer{pluralize:answer_count} \
+            </div> \
         </div> \
-        <div class="se-status {acceptedclass:=}"> \
-            <div class="se-mini-counts">{answer_count}</div>\
-            <div>answer</div> \
-        </div> \
-        <div class="se-views {viewcountcolor:view_count}"> \
-            <div class="se-mini-counts">{viewcountnumber:view_count}</div> \
-            <div>{viewcountk:view_count}views</div> \
-        </div> \
+        <div class="se-views {viewcountcolor:view_count}" title="{view_count}{viewcountk:view_count} view{pluralize:view_count}">{view_count} views</div> \
     </div> \
     <div class="se-summary"> \
         <h3><a href="{site}{question_answers_url}" class="se-question-hyperlink" title="{title}">{title}</a></h3> \
-        <div class="se-tags"> \
-            {template-tag:tags}\
-        </div> \
+        <div class="excerpt"> {summarize:body} </div> \
+        <div class="se-tags"> {template-tag:tags} </div> \
         <div class="se-started"> \
-            <span class="se-relativetime">{date:last_activity_date}</span> \
-            <a style="display:{ifdef:owner}" href="{site}/users/{owner.user_id}/{owner.display_name}">{owner.display_name}</a> <span style="display:{ifdef:owner}"  class="se-reputation-score" title="reputation score">{owner.reputation}</span> \
+            <div class="se-user-info"><div class="user-action-time">asked <span title="{date:last_activity_date}">{date:last_activity_date}</span></div> \
+                <div class="user-gravatar32"><a href="{site}/users/{owner.user_id}/{owner.display_name}"><div><img src="http://www.gravatar.com/avatar/{owner.email_hash}?s=32&amp;d=identicon&amp;r=PG" alt=""></div></a></div> \
+                <div class="se-user-details"><a style="display:{ifdef:owner}" href="{site}/users/{owner.user_id}/{owner.display_name}">{owner.display_name}</a> <br/> <span style="display:{ifdef:owner}" class="se-reputation-score" title="reputation score">{owner.reputation}</span></div> \
+            </div> \
         </div> \
     </div> \
 </div> '
@@ -296,6 +298,21 @@ var su = window.stackunderflow = {
         },
         viewcountk: function(value) {
             return value > 999 ? "k" : "";
+        },
+        summarize: function(value){
+            var max_desc = 220;
+            var strip_lines = /(\n|\r|<br>|<br\/>|<br \/>|<p>|<\/p>|<\/a>|<code>|<\/code>|<pre>|<\/pre>)/img;
+            var strip_links = /<a href="[^>]*>/img;
+            value = value.replace(strip_lines, " ");
+            value = value.replace(strip_links, " ");
+            if(value.length > max_desc){
+                return value.substr(0, max_desc);
+            }else{
+                return value;
+            }
+        },
+        pluralize: function(value){
+            return value == 1 || value == "1" ? "" : "s";
         },
         viewcountcolor: function(value) {
             if(value >= 100000)
