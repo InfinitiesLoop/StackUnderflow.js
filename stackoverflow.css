@@ -10,7 +10,7 @@ within an element with the '.se-question-summary' class.
     color: #000;
     font-family: Arial, Liberation Sans, DejaVu Sans, sans-serif;
     font-size: 80%;
-    border-bottom: 1px dotted #999;
+    border-bottom: 1px solid #DEDEDE;
     overflow: hidden;
     padding: 6px 0px;
     width: 730px;
@@ -20,6 +20,40 @@ within an element with the '.se-question-summary' class.
     zoom: 1;
     /* from #mainbar */
     float: left;
+}
+.se-question-summary .se-statscontainer {
+    width: 86px;
+    float: left;
+    margin-right: 8px;
+}
+.se-question-summary .statsarrow {
+    float: right;
+    height: 13px;
+    width: 7px;
+    margin-top: 12px;
+    background-position: 0px -435px;
+}
+
+.se-question-summary .se-stats {
+    background: #EEE;
+    margin: 0 0 0 7px;
+    padding: 4px 7px 6px 7px;
+    width: 58px;
+}
+.se-question-summary .se-vote {
+    text-align: center;
+}
+.se-question-summary .se-votes {
+    color: #555;
+    text-align: center;
+    background: #eee;
+    padding: 0 0 7px 0;
+}
+
+.se-question-summary .se-vote span {
+display: block;
+color: #808185;
+font-weight: bold;
 }
 
 .se-question-summary a {
@@ -77,24 +111,10 @@ within an element with the '.se-question-summary' class.
     width: 730px;
     float: left;
 }
-.se-question-summary .se-votes {
-    color: #555;
-    text-align: center;
-    background: #eee;
-    float: left;
-    margin: 0 3px 0 0;
-    padding: 5px;
-    width: 38px;
-    height: 38px;
-}
 .se-question-summary .se-views {
     color: #999;
     text-align: center;
-    width: 50px;
-    height: 38px;
-    float: left;
-    margin: 0 7px 0 0;
-    padding: 5px 0 5px 4px;
+    padding-top: 4px;
 }
 .se-question-summary .se-views strong {
     display: block;
@@ -113,16 +133,10 @@ within an element with the '.se-question-summary' class.
 }
 
 .se-question-summary .se-status {
-    padding: 4px 0 4px;
     text-align: center;
-    float: left;
-    margin: 0 3px 0 0;
-    padding: 5px;
-    width: 48px;
-    height: 38px;
+    padding: 4px 0px 4px;
 }
 .se-question-summary .se-status strong {
-    color: #fff;
     display: block;
     font-size: 140%;
 }
@@ -138,8 +152,7 @@ within an element with the '.se-question-summary' class.
     color: #E1E818;
 }
 .se-question-summary .se-unanswered {
-    background: #9A4444;
-    color: #fff;
+    color:#9A4444; 
 }
 .se-question-summary .se-summary {
     float: left;
@@ -148,15 +161,28 @@ within an element with the '.se-question-summary' class.
 .se-question-summary .se-summary h3 {
     font-size: 130%;
 }
-.se-question-summary .se-summary {
-    width: 550px;
-}
 .se-question-summary .se-tags {
     line-height: 18px;
     float: left;
 }
 .se-question-summary .se-tags a:hover {
     text-decoration: none;
+}
+.se-question-summary .se-user-info .user-gravatar32{
+    float: left;
+    width: 32px;
+    height: 32px;
+}
+.se-question-summary .se-user-info {
+    height: 35px;
+    width: 185px;
+}
+.se-question-summary .se-user-info .se-user-details{
+    float: left;
+    margin-left: 5px;
+    width: 145px;
+    overflow: hidden;
+    white-space: nowrap; 
 }
 .se-question-summary .se-started {
     color: #999;
